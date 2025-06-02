@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Video Carousel with Player</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-analytics.js"></script> -->
+</head>
+
+<body>
+    <!-- Carousel Section -->
+  <div class="carousel-container">
+    <div class="carousel">
+      <!-- Các phần tử carousel sẽ được JS thêm vào đây -->
+    </div>
+    <div class="controls">
+      <button class="control prev">⏮</button>
+      <button class="control next">⏭</button>
+    </div>
+  </div>
+
+
+    <!-- Player Section -->
+    <div class="player">
+        <p class="song-title">Currently Playing</p>
+        <p class="song-artist">Video Player</p>
+        <input type="range" class="progress-bar" value="0" />
+        <div class="player-buttons">
+            <button class="rewind">⏮</button>
+            <button class="play-pause">⏯</button>
+            <button class="forward">⏭</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <!-- <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyDU6HCsBe5ba9cdi_ukVuLyIbq7e8Y0Y1o",
+            authDomain: "music-45b15.firebaseapp.com",
+            projectId: "music-45b15",
+            storageBucket: "music-45b15.firebasestorage.app",
+            messagingSenderId: "64472645682",
+            appId: "1:64472645682:web:686cde28a4cd5a31337c2b",
+            measurementId: "G-2BWFE5PNJW"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+
+        //=========================================
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+
+
+        // Khởi tạo Database
+        //   firebase.database().ref("Students/" + "adsa").set("sadasd");
+    </script> -->
+</body>
+
+</html>

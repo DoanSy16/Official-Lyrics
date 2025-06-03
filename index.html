@@ -4,71 +4,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D Video Carousel with Player</title>
+    <title>3D Video Carousel with Player and Menu</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
 
-    <!-- <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-database.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-analytics.js"></script> -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-analytics.js"></script>
+
 </head>
 
 <body>
-    <!-- Carousel Section -->
-  <div class="carousel-container">
-    <div class="carousel">
-      <!-- Các phần tử carousel sẽ được JS thêm vào đây -->
+    <div class="w3-sidebar w3-bar-block w3-card w3-animate-left menu" style="display:none" id="mySidebar">
+        <button class="w3-bar-item w3-button w3-large" onclick="w3_close()">Close &times;</button>
+        <input class="input-search" oninput="createElementButton(this.value)" />
     </div>
-    <div class="controls">
-      <button class="control prev">⏮</button>
-      <button class="control next">⏭</button>
-    </div>
-  </div>
+
+    <div id="main">
+        <div class="carousel-container">
+            <div class="carousel">
+            </div>
+            <div class="controls">
+                <button class="control prev">⏮</button>
+                <button class="control next">⏭</button>
+            </div>
+        </div>
 
 
-    <!-- Player Section -->
-    <div class="player">
-        <p class="song-title">Currently Playing</p>
-        <p class="song-artist">Video Player</p>
-        <input type="range" class="progress-bar" value="0" />
-        <div class="player-buttons">
-            <button class="rewind">⏮</button>
-            <button class="play-pause">⏯</button>
-            <button class="forward">⏭</button>
+        <div class="player">
+            <div style=" display: flex;">
+                <button id="openNav" onclick="w3_open()">&#9776;</button>
+            </div>
+            <p class="song-title">Currently Playing</p>
+            <p class="song-artist">Video Player</p>
+            <input type="range" class="progress-bar" value="0" />
+            <div class="player-buttons">
+                <button class="rewind">⏮</button>
+                <button class="play-pause">⏯</button>
+                <button class="forward">⏭</button>
+            </div>
         </div>
     </div>
-
     <script src="script.js"></script>
-    <!-- <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-analytics.js";
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
+</body>
 
-        // Your web app's Firebase configuration
-        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-        const firebaseConfig = {
-            apiKey: "AIzaSyDU6HCsBe5ba9cdi_ukVuLyIbq7e8Y0Y1o",
-            authDomain: "music-45b15.firebaseapp.com",
-            projectId: "music-45b15",
-            storageBucket: "music-45b15.firebasestorage.app",
-            messagingSenderId: "64472645682",
-            appId: "1:64472645682:web:686cde28a4cd5a31337c2b",
-            measurementId: "G-2BWFE5PNJW"
-        };
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
 
-        firebase.initializeApp(firebaseConfig);
-        firebase.analytics();
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+        apiKey: "AIzaSyBx25pTFZHU6r7tmpPpkv_W0szekkBi1FM",
+        authDomain: "davisy-b230e.firebaseapp.com",
+        databaseURL: "https://davisy-b230e-default-rtdb.firebaseio.com",
+        projectId: "davisy-b230e",
+        storageBucket: "davisy-b230e.appspot.com",
+        messagingSenderId: "948992671215",
+        appId: "1:948992671215:web:8af45dda53df5670330a1a",
+        measurementId: "G-X6K7ZVHJNL"
+    };
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
 
-        //=========================================
-        const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
+    //=========================================
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
 
+   // Danh sách bài hát
+// const songs = [
+//     {
+//         "name": "Cao Ốc 20",
+//         "artist": "Artist 1",
+//         "audio": "https://firebasestorage.googleapis.com/v0/b/davisy-b230e.appspot.com/o/audios%2F1.mp3?alt=media&token=68b2f432-8e8d-46c6-9036-858b7d5fd29b",
+//         "image": "https://firebasestorage.googleapis.com/v0/b/davisy-b230e.appspot.com/o/images%2F1.PNG?alt=media&token=559d3f6b-3204-4059-9349-fa8f69e98c54"
+//     },
+//     {
+//         "name": "Mùa Hè Năm Đó",
+//         "artist": "Artist 2",
+//         "audio": "https://firebasestorage.googleapis.com/v0/b/davisy-b230e.appspot.com/o/audios%2F2.mp3?alt=media&token=0aa06958-fe7a-445a-ba97-ea7cb225c1db",
+//         "image": "https://firebasestorage.googleapis.com/v0/b/davisy-b230e.appspot.com/o/images%2F2.PNG?alt=media&token=c0a25495-7654-489b-9d6b-35819bba9a9e"
+//     },
+//     {
+//         "name": "Hoàn Hảo",
+//         "artist": "Artist 3",
+//         "audio": "https://firebasestorage.googleapis.com/v0/b/davisy-b230e.appspot.com/o/audios%2F3.mp3?alt=media&token=fdc645d6-f15c-4381-94d1-78303d63a486",
+//         "image": "https://firebasestorage.googleapis.com/v0/b/davisy-b230e.appspot.com/o/images%2F3.PNG?alt=media&token=66024f69-6e5b-472f-9417-304238eb1364"
+//     }
+// ];
 
-        // Khởi tạo Database
-        //   firebase.database().ref("Students/" + "adsa").set("sadasd");
-    </script> -->
+// Thêm từng bài hát vào Firebase
+// songs.forEach((song) => {
+//     firebase.database().ref("Official-Lyrics").push(song)
+//         .then(() => {
+//             console.log("Đã thêm bài hát:", song.name);
+//         })
+//         .catch((error) => {
+//             console.error("Lỗi khi thêm bài hát:", error);
+//         });
+// });
+
+    // Khởi tạo Database
+    // firebase.database().ref("Official-Lyrics/" + "Hoàn Hảo").set(data);
+    // firebase.database().ref("Official-Lyrics/" + "Hoàn Hảo").push(data);
+</script>
+<script>
+    function w3_open() {
+        document.getElementById("main").style.marginLeft = "5%";
+        document.getElementById("mySidebar").style.width = "auto";
+        document.getElementById("mySidebar").style.maxWidth = "50%";
+        document.getElementById("mySidebar").style.display = "block";
+        document.getElementById("openNav").style.display = 'none';
+    }
+    function w3_close() {
+        document.getElementById("main").style.marginLeft = "0%";
+        document.getElementById("mySidebar").style.display = "none";
+        document.getElementById("openNav").style.display = "inline-block";
+    }
+</script>
 </body>
 
 </html>

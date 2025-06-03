@@ -4,8 +4,16 @@ body {
     background: #f0f0f0;
     display: flex;
     flex-direction: column;
+    height: 100vh;
+    margin: 0;
+}
+
+#main {
     align-items: center;
     justify-content: center !important;
+    background: #f0f0f0;
+    display: flex;
+    flex-direction: column;
     height: 100vh;
     margin: 0;
 }
@@ -18,10 +26,10 @@ body {
 
 /* Carousel chính */
 .carousel {
-    width: 90vw;         /* Chiếm 90% chiều rộng màn hình */
-    max-width: 600px;    /* Giới hạn max chiều rộng */
-    height: 45vw;        /* Chiều cao tỉ lệ với vw, giữ tỉ lệ phù hợp */
-    max-height: 300px;   /* Giới hạn max chiều cao */
+    width: 90vw;
+    max-width: 600px;
+    height: 45vw;
+    max-height: 300px;
     justify-content: center;
     position: relative;
     display: flex;
@@ -33,8 +41,8 @@ body {
 /* Mỗi item trong carousel */
 .carousel__item {
     position: absolute;
-    width: 33%;          /* Chiếm khoảng 1/3 chiều rộng carousel */
-    height: 90%;         /* Chiều cao 90% chiều cao carousel */
+    width: 33%;
+    height: 90%;
     background-size: cover;
     background-position: center;
     background-color: #fff;
@@ -56,7 +64,8 @@ body {
 .carousel__item img,
 .carousel__item video {
     width: 100%;
-    height: auto;        /* Giữ tỉ lệ ảnh/video */
+    height: 80%;
+    /* Giữ tỉ lệ ảnh/video */
     border-radius: 10px;
 }
 
@@ -74,6 +83,8 @@ body {
     font-size: 20px;
     border: none;
     border-radius: 50%;
+    width: 50px;
+    height: 50px;
     padding: 10px;
     cursor: pointer;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -122,6 +133,8 @@ body {
     color: white;
     border: none;
     border-radius: 50%;
+    min-width: 50px;
+    min-height: 50px;
     padding: 10px;
     font-size: 18px;
     cursor: pointer;
@@ -140,10 +153,12 @@ body {
         width: 100vw;
         height: 60vw;
     }
+
     .carousel__item {
         width: 50%;
         height: 85%;
     }
+
     .player {
         width: 95vw;
     }
@@ -154,11 +169,52 @@ body {
     .carousel {
         height: 70vw;
     }
+
     .carousel__item {
         width: 70%;
         height: 80%;
     }
+
     .player {
         width: 95vw;
     }
 }
+
+.button-search-img {
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+    width: 100%;
+ 
+}
+
+.button-content {
+    display: flex;
+    align-items: center; 
+    gap: 10px;
+}
+
+.search_img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+       margin: 5px 10px 5px 10px;
+    /* transition: transform 0.3s ease, box-shadow 0.3s ease; */
+}
+
+.button-search-img:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    background-color: lightgrey;
+    border-radius: 5%;
+}
+.input-search{
+    width: 80%;
+    border-radius: 5%;
+    margin: 10px;
+}
+
+
+
+
